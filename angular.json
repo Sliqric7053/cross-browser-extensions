@@ -19,7 +19,8 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "apps/app-web-extension/src/favicon.ico",
-              "apps/app-web-extension/src/assets"
+              "apps/app-web-extension/src/assets",
+              "apps/app-web-extension/src/manifest.json"
             ],
             "styles": ["apps/app-web-extension/src/styles.scss"],
             "scripts": []
