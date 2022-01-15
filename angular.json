@@ -8,7 +8,7 @@
       "prefix": "cross-browser-extensions",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/app-web-extension",
@@ -23,7 +23,10 @@
               "apps/app-web-extension/src/manifest.json"
             ],
             "styles": ["apps/app-web-extension/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "customWebpackConfig": {
+              "path": "apps/app-web-extension/custom-webpack.config.js"
+            }
           },
           "configurations": {
             "production": {
@@ -45,7 +48,7 @@
                   "with": "apps/app-web-extension/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "none"
             },
             "development": {
               "buildOptimizer": false,
