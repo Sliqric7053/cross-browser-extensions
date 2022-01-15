@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'chrome-extension',
+  displayName: 'app-web-extension',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../coverage/apps/chrome-extension',
+  coverageDirectory: '../../coverage/apps/app-web-extension',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },
