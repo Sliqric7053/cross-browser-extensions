@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "projects": {
+    "chrome-extension": {
+      "projectType": "application",
+      "root": "apps/chrome-extension",
+      "sourceRoot": "apps/chrome-extension/src",
+      "prefix": "cross-browser-extensions",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/chrome-extension",
+            "index": "apps/chrome-extension/src/index.html",
+            "main": "apps/chrome-extension/src/main.ts",
+            "polyfills": "apps/chrome-extension/src/polyfills.ts",
+            "tsConfig": "apps/chrome-extension/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/chrome-extension/src/favicon.ico",
+              "apps/chrome-extension/src/assets"
+            ],
+            "styles": ["apps/chrome-extension/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/chrome-extension/src/environments/environment.ts",
+                  "with": "apps/chrome-extension/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "chrome-extension:build:production"
+            },
+            "development": {
+              "browserTarget": "chrome-extension:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "chrome-extension:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/chrome-extension/src/**/*.ts",
+              "apps/chrome-extension/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/chrome-extension"],
+          "options": {
+            "jestConfig": "apps/chrome-extension/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "chrome-extension-e2e": {
+      "root": "apps/chrome-extension-e2e",
+      "sourceRoot": "apps/chrome-extension-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/chrome-extension-e2e/cypress.json",
+            "devServerTarget": "chrome-extension:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "chrome-extension:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/chrome-extension-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["chrome-extension"]
+    }
+  }
+}
