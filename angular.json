@@ -95,15 +95,15 @@
       },
       "tags": []
     },
-    "chrome-extension-e2e": {
-      "root": "apps/chrome-extension-e2e",
-      "sourceRoot": "apps/chrome-extension-e2e/src",
+    "web-extension-e2e": {
+      "root": "apps/web-extension-e2e",
+      "sourceRoot": "apps/web-extension-e2e/src",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/chrome-extension-e2e/cypress.json",
+            "cypressConfig": "apps/web-extension-e2e/cypress.json",
             "devServerTarget": "app-web-extension:serve:development"
           },
           "configurations": {
@@ -116,7 +116,7 @@
           "builder": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": ["apps/chrome-extension-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": ["apps/web-extension-e2e/**/*.{js,ts}"]
           }
         }
       },
