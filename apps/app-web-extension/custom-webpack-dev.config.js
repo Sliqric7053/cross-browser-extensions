@@ -9,7 +9,7 @@ module.exports = {
       reloadPage: true,
       entries: {
         background: 'apps/app-web-extension/src/background.ts',
-        // 'content-script': 'apps/app-web-extension/src/content-script.ts',
+        'content': 'apps/app-web-extension/src/content.ts',
       },
     }),
   ],
